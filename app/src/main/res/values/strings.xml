@@ -1,3 +1,101 @@
 <resources>
     <string name="app_name">AndroidInterview</string>
+
+    <!-- Navigation -->
+    <string name="nav_home">Home</string>
+    <string name="nav_payouts">Payouts</string>
+
+    <!-- Shared -->
+    <string name="action_retry">Retry</string>
+    <string name="action_try_again">Try Again</string>
+    <string name="action_cancel">Cancel</string>
+    <string name="error_no_connection">No internet connection. Check your connection and try again.</string>
+    <string name="error_service_unavailable">Service temporarily unavailable. Please try again later.</string>
+    <string name="error_insufficient_funds">Insufficient funds.</string>
+    <string name="error_rejected">The request was rejected. Please check the details and try again.</string>
+    <string name="error_unexpected">Something went wrong. Please try again.</string>
+    <string name="status_pending">Pending</string>
+    <string name="status_processing">Processing</string>
+    <string name="status_completed">Completed</string>
+    <string name="status_failed">Failed</string>
+    <string name="status_unknown">Unknown</string>
+
+    <!-- Home -->
+    <string name="home_title">Business Account</string>
+    <string name="home_loading">Loading your account</string>
+    <string name="home_account_balance">Account Balance</string>
+    <string name="home_available">Available</string>
+    <string name="home_pending">Pending</string>
+    <string name="home_recent_activity">Recent Activity</string>
+    <string name="home_no_recent_activity">No recent activity yet.</string>
+    <string name="home_show_more">Show More</string>
+
+    <!-- Activity list -->
+    <string name="activity_title">Recent Activity</string>
+    <string name="activity_done">Done</string>
+    <string name="activity_loading">Loading activity</string>
+    <string name="activity_loading_more">Loading more…</string>
+    <string name="activity_load_more_failed">Couldn\'t load more activity.</string>
+    <string name="activity_empty">No activity yet.</string>
+    <string name="activity_today">Today</string>
+    <string name="activity_yesterday">Yesterday</string>
+    <string name="activity_type_payout">Payout</string>
+    <string name="activity_type_deposit">Deposit</string>
+    <string name="activity_type_refund">Refund</string>
+    <string name="activity_type_fee">Fee</string>
+    <string name="activity_type_other">Other</string>
+
+    <!-- Payout form -->
+    <string name="payout_title">Send Payout</string>
+    <string name="payout_result_title">Payout</string>
+    <string name="payout_amount_label">Amount</string>
+    <string name="payout_amount_placeholder">0.00</string>
+    <string name="payout_amount_error_invalid">Enter a valid amount, for example 1,250.50.</string>
+    <string name="payout_amount_error_not_positive">Amount must be greater than zero.</string>
+    <plurals name="payout_amount_error_too_many_decimals">
+        <item quantity="one">Use at most %1$d decimal place.</item>
+        <item quantity="other">Use at most %1$d decimal places.</item>
+    </plurals>
+    <string name="payout_amount_error_too_large">Amount is too large.</string>
+    <string name="payout_currency_label">Currency</string>
+    <string name="payout_iban_label">IBAN</string>
+    <string name="payout_iban_placeholder">GB29 NWBK 6016 1331 9268 19</string>
+    <string name="payout_iban_helper">Enter the destination bank account IBAN</string>
+    <string name="payout_iban_error">Enter a valid IBAN.</string>
+    <string name="payout_confirm">Confirm</string>
+    <string name="payout_confirm_disabled_hint">Enter an amount and a valid IBAN first</string>
+    <string name="payout_processing">Processing payout…</string>
+
+    <!-- Payout confirmation -->
+    <string name="payout_confirm_title">Confirm Payout</string>
+    <string name="payout_confirm_amount">Amount:</string>
+    <string name="payout_confirm_currency">Currency:</string>
+    <string name="payout_confirm_iban">IBAN:</string>
+    <string name="payout_confirm_iban_description">Starts with %1$s and ends with %2$s</string>
+
+    <!-- Payout result -->
+    <string name="payout_submitted_title">Payout Submitted</string>
+    <string name="payout_submitted_message">Your payout of %1$s is being processed.</string>
+    <string name="payout_completed_title">Payout Completed</string>
+    <string name="payout_completed_message">Your payout of %1$s has been processed successfully.</string>
+    <string name="payout_status_stale">This is taking longer than usual. Your payout is still being processed.</string>
+    <string name="payout_check_status_again">Check again</string>
+    <string name="payout_create_another">Create Another Payout</string>
+    <string name="payout_failed_title">Unable to Process Payout</string>
+    <string name="payout_failure_processing">The payout could not be completed. Please try again.</string>
+
+    <!-- Biometric authentication -->
+    <string name="biometric_prompt_title">Biometric Authentication</string>
+    <string name="biometric_prompt_subtitle">Authenticate to complete the payout</string>
+    <string name="biometric_prompt_negative">Cancel</string>
+    <string name="biometric_failure_cancelled">Biometric authentication was cancelled.</string>
+    <string name="biometric_failure_not_set_up">Biometrics aren\'t set up on this device. Set up fingerprint authentication in Settings to send payouts over %1$s.</string>
+    <string name="biometric_failure_locked_out">Too many failed attempts. Please try again later.</string>
+    <string name="biometric_failure_unavailable">Biometric authentication isn\'t available on this device right now.</string>
+    <string name="biometric_open_settings">Open Settings</string>
+
+    <!-- Screenshot warning -->
+    <string name="screenshot_warning_title">Security Reminder</string>
+    <string name="screenshot_warning_message">Please keep your financial data private. Screenshots may contain sensitive information.</string>
+    <string name="screenshot_warning_ok">OK</string>
 </resources>
