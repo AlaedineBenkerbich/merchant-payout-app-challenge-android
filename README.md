@@ -1,5 +1,7 @@
 # 💳 Merchant Payout App Challenge (Android)
 
+> **Solution:** see [NOTES.md](NOTES.md) for how to run it, what is covered, the architecture and the decisions behind it.
+
 Welcome to the Merchant Payout Challenge! This is a mobile frontend coding challenge designed to assess your ability to implement a financial payout experience using Kotlin and Jetpack Compose.
 
 Your task is to build a merchant dashboard and payout flow that allows users to:
