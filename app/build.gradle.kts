@@ -44,6 +44,10 @@ android {
         reportsDestination = layout.buildDirectory.dir("compose_reports")
         metricsDestination = layout.buildDirectory.dir("compose_metrics")
     }
+
+    testOptions {
+        unitTests.isReturnDefaultValues = true
+    }
 }
 
 dependencies {
@@ -64,6 +68,9 @@ dependencies {
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.compose.material3)
 
+    // Navigation
+    implementation(libs.androidx.navigation.compose)
+
     // Coroutines
     implementation(libs.kotlinx.coroutines.android)
 
@@ -73,6 +80,7 @@ dependencies {
     // Networking
     implementation(libs.okhttp)
     implementation(libs.retrofit)
+    implementation(libs.retrofit.converter.kotlinx.serialization)
     implementation(libs.okhttp.mockwebserver)
 
     // Room
@@ -85,13 +93,16 @@ dependencies {
     implementation(libs.androidx.paging.runtime)
     implementation(libs.androidx.paging.compose)
 
-    // Biometric
+    // Biometric (BiometricPrompt needs a FragmentActivity)
     implementation(libs.androidx.biometric)
+    implementation(libs.androidx.fragment.ktx)
 
     // Testing
     testImplementation(libs.junit)
+    testImplementation(libs.kotlin.test.junit)
     testImplementation(libs.kotlinx.coroutines.test)
     androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.kotlin.test.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
