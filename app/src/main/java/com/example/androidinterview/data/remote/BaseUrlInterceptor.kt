@@ -12,9 +12,10 @@ import okhttp3.Response
 /**
  * Points every request at the local mock server once it is listening.
  *
- * The mock server is started on a background thread at launch, and reading its URL before it is
- * running would start it a second time with the wrong dispatcher. Requests are therefore built
- * against a placeholder host and re-targeted here, on OkHttp's own threads, after waiting for it.
+ * The mock server is started on a background thread at launch, and reading its URL before that
+ * thread has started it makes MockWebServer start itself with its default dispatcher, so the
+ * explicit start() then fails. Requests are therefore built against a placeholder host and
+ * re-targeted here, on OkHttp's own threads, after waiting for it.
  */
 class BaseUrlInterceptor(
     private val baseUrl: CompletableFuture<HttpUrl>,

@@ -57,10 +57,12 @@ com.example.androidinterview
 
 * **Money is never a float.** Amounts are `Long` minor units (pence, cents) end to end; user input is parsed with
   `BigDecimal`. Formatting uses `NumberFormat` with UK conventions whatever the device language (`£5,000.00`, `-£979.74`).
-* **The mock server start-up is racy.** It starts on a background thread, and reading `MockServerManager.baseUrl` before it
-  has started would start it a second time with the wrong dispatcher. `InterviewApplication` therefore publishes the URL once
-  `start()` has returned, and `BaseUrlInterceptor` re-targets requests (built against a placeholder host) after waiting for it.
-  This is the only change made to the provided starter code besides the manifest and theme.
+* **The mock server start-up is racy.** It starts on a background thread, and reading `MockServerManager.baseUrl` before that
+  thread has called `start()` makes MockWebServer start itself with its default dispatcher, after which the explicit `start()`
+  fails with "start() already called" (checked against MockWebServer 4.12.0). `InterviewApplication` therefore publishes the
+  URL once `start()` has returned, and `BaseUrlInterceptor` re-targets requests (built against a placeholder host) after
+  waiting for it. `mock/` itself is untouched; apart from the build files, resources, manifest, theme and `MainActivity` (which
+  now hosts the app), this is the only change to the starter code.
 * **Pagination** is cursor-based with one rule: only an *idle* footer may request a page, so a page is never requested
   twice. Items are de-duplicated by id, and a page that brings nothing new ends paging instead of looping.
 * **Grouping by day** uses the merchant's local zone, read from an injected `Clock` on each call (time zone changes are
@@ -119,7 +121,6 @@ com.example.androidinterview
 * **Step 5** mentions a "native bridge" and a "promise", which is wording from a React Native version of the challenge; the
   Android equivalent is `BiometricPrompt`.
 * **Limits.** Amounts are capped at what the API's 32-bit integer can carry (about 21.4 million), and at two decimals.
-* **The provided mock logs request bodies**, IBANs included, to Logcat: it must never be pointed at real data.
 
 ## Tests
 
@@ -134,7 +135,8 @@ Unit tests cover each layer, in the `should … when …` / Given-When-Then styl
 
 Instrumented Compose tests (`./gradlew connectedDebugAndroidTest`, on an emulator or device) cover what the merchant sees and
 what each screen asks of its ViewModel: the stateless Home, activity list and payout screens in each of their states
-(loading, error, empty, content, confirmation, submitted, completed, failed), inline validation messages and every button.
+(loading, error, empty, content, confirmation, submitted, completed, failed), inline validation messages and what the buttons
+ask of their callbacks.
 They need no network and no ViewModel, so they are fast and deterministic.
 
 What is not covered automatically is system UI: the biometric prompt wrapper and the screenshot callback. These were
